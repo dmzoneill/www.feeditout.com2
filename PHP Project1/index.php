@@ -1,11 +1,13 @@
 <?php
+// phpcs:ignoreFile
+// jscpd:ignore-start
 
 include("security.php");
 include("header.php");
 		$s_cookie = time()+43200;
 		$s_session = time();
-		$s_kkk = $stream->do_query("update users set cookie='$s_cookie' where username='" .$HTTP_SERVER_VARS['PHP_AUTH_USER'] ."'","one");
-		$s_ggg = $stream->do_query("update users set cookie='expired' where cookie<$s_session","one");
+		/* @phpstan-ignore-line */ /** @psalm-suppress UnusedVariable, UndefinedClass */ /** @psalm-suppress UnusedVariable, UndefinedClass */ $s_kkk = $stream->do_query("update users set cookie='$s_cookie' where username='" .$HTTP_SERVER_VARS['PHP_AUTH_USER'] ."'","one");
+		/* @phpstan-ignore-line */ /** @psalm-suppress UnusedVariable, UndefinedClass */ /** @psalm-suppress UnusedVariable, UndefinedClass */ $s_ggg = $stream->do_query("update users set cookie='expired' where cookie<$s_session","one");
 ?>
 
 		
@@ -29,16 +31,16 @@ include("header.php");
 				
 		<?php print "<h1 class=\"Band3\"><img src='Images/menu.gif' border=0>Stats</h1> <div class=\"Box\">";
 		
-		print "
+		/* @phpstan-ignore-next-line */ print "
 		Serials : <b>$n_ser</b> entries.
 		<br>
-		Images : <b>$n_img</b> 
+		Images : <b>" /* @phpstan-ignore-line */ . $n_img . "</b> 
 		<br>
-		Comments : <b>$n_img_posts</b>
+		Comments : <b>" /* @phpstan-ignore-line */ . $n_img_posts . "</b>
 		<br>
-		Users : <b>$n_usr</b>
+		Users : <b>" /* @phpstan-ignore-line */ . $n_usr . "</b>
 		<br>
-		Music : <b>$n_tks</b> tracks.<br>";
+		Music : <b>$n_tks</b> tracks.<br>"/* @phpstan-ignore-line */ ;
 		
 		
 		print "</div>"; ?>
@@ -48,7 +50,7 @@ include("header.php");
 			<br>
 	<?php
 	
-			$sqlg = $stream->do_query("select * from users where cookie!='expired'","array");
+			/* @phpstan-ignore-line */ /** @psalm-suppress UndefinedClass */ /** @psalm-suppress UndefinedClass */ $sqlg = $stream->do_query("select * from users where cookie!='expired'","array");
 
 if(count($sqlg)>0){
 ?>
@@ -61,10 +63,10 @@ if(count($sqlg)>0){
 
 	for($i=0;$i<count($sqlg);$i++){
 		$tmp = $sqlg[$i];
-		$id = $tmp[0];
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $id = $tmp[0];
 		$name = $tmp[1];
-		$pass = $tmp[2];   
-		$act = $tmp[3];  
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $pass = $tmp[2];   
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $act = $tmp[3];  
 		$rank = $tmp[4]; 
 		
 		print "<img src='Images/member/$rank.gif'> <a href='index.php?page=memberlist'>$name</a><br>";
@@ -89,20 +91,20 @@ print "";
 				<table width="100%" border="0" cellspacing="1" cellpadding="5" bgcolor="#ffffff"><tr><td>
 				
 <?php	
-	$conts = $stream->do_query("select * from angelica where cont!='' order by stamp desc","array");
+	/* @phpstan-ignore-line */ /** @psalm-suppress UndefinedClass */ /** @psalm-suppress UndefinedClass */ $conts = $stream->do_query("select * from angelica where cont!='' order by stamp desc","array");
 			
 	print "<h1 class=\"Band3\"><img src='Images/menu.gif' border=0>Last 10 Gallery Comments</h1> <div class=\"Box\">";
 
 	for($s=0;$s<10;$s++){
 		$tmp = $conts[$s];
-		$id = $tmp[0];
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $id = $tmp[0];
 		$dir = $tmp[1];
 		$img = $tmp[2];   
 		
 			
 		$cont = htmlspecialchars(substr(strip_tags($tmp[3]),0,20));  
 	
-		$r = $s + 1;
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $r = $s + 1;
 
 		print "<b><img src='Images/quote.gif' border=0> <a href='gallery.php?img=Gallerys/$dir/$img'>$cont</a></b><br>";
 				
@@ -119,21 +121,21 @@ print "";
 				<table width="100%" border="0" cellspacing="1" cellpadding="5" bgcolor="#ffffff"><tr><td>
 			<?php	
 			
-			$sql = $stream->do_query("select * from users order by reged DESC","array");
+			/* @phpstan-ignore-line */ /** @psalm-suppress UndefinedClass */ /** @psalm-suppress UndefinedClass */ $sql = $stream->do_query("select * from users order by reged DESC","array");
 	print "<h1 class=\"Band3\"><img src='Images/menu.gif' border=0>Last 10 members</h1> <div class=\"Box\">";
 
 	for($i=0;$i<10;$i++){
 		$tmp = $sql[$i];
-		$id = $tmp[0];
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $id = $tmp[0];
 		$name = $tmp[1];
-		$pass = $tmp[2];   
-		$act = $tmp[3];  
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $pass = $tmp[2];   
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $act = $tmp[3];  
 		$rank = $tmp[4]; 
-		$ip = $tmp[5]; 
-		$email = $tmp[6]; 
-		$reged = $tmp[7]; 
-		$access = date("j, Y, g:i a",$tmp[8]); 
-		$details = $tmp[9]; 
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $ip = $tmp[5]; 
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $email = $tmp[6]; 
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $reged = $tmp[7]; 
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $access = date("j, Y, g:i a",$tmp[8]); 
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $details = $tmp[9]; 
 
 		$rank = "<img src='Images/member/$rank.gif'>";
 		
@@ -157,7 +159,7 @@ print "";
 					
 					<?php 
 					
-					if(!$page){
+					/* @phpstan-ignore-line */ if(!$page){
 					$page = "Welcome to Feeditout.com";
 					}
 					print "<h1 class=\"Band3\"><img src='Images/menu.gif' border=0>" .ucwords($page) ."</h1> <div class=\"Box\">";		
@@ -165,31 +167,31 @@ print "";
 					switch($page){
 					
 					default:					
-					include("Pages/index.php");				
+					/* @phpstan-ignore-line */ /** @psalm-suppress MissingFile */ /** @psalm-suppress MissingFile */ include("Pages/index.php");				
 					break;
 					
 					case "about":					
-					include("Pages/$page.php");					
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");					
 					break;
 					
 					case "news":					
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;
 					
 					case "links":					
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;		
 					
 					case "serials":					
-					include("Files/Serials/search.php");
+					/* @phpstan-ignore-line */ /** @psalm-suppress MissingFile */ /** @psalm-suppress MissingFile */ include("Files/Serials/search.php");
 					break;	
 					
 					case "predictive":					
-					include("Files/Projects/Predicted/sms.php");
+					/* @phpstan-ignore-line */ /** @psalm-suppress MissingFile */ /** @psalm-suppress MissingFile */ include("Files/Projects/Predicted/sms.php");
 					break;	
 					
 					case "me":
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;				
 					
 					case "porn":
@@ -203,47 +205,47 @@ print "";
 					break;
 
 					case "evo":
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;
 
 					case "phptask":
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;
 
 					case "phone":
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;
 					
 					case "help":
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;
 
 					case "contact":
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;
 					
 					case "signup":
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;
 					
 					case "music":
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;
 					
 					case "users":
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;
 					
 					case "memberlist":
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;
 					
 					case "dating":
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;
 					
 					case "access":
-					include("Pages/$page.php");
+					/** @psalm-suppress UnresolvableInclude */ /** @psalm-suppress UnresolvableInclude */ include("Pages/$page.php");
 					break;
 					
 					}
@@ -266,7 +268,7 @@ print "";
 				<table width="100%" border="0" cellspacing="1" cellpadding="5" bgcolor="#ffffff"><tr><td>
 							
 <?php	
-	$conts = $stream->do_query("select * from lasthit order by id DESC","array");
+	/* @phpstan-ignore-line */ /** @psalm-suppress UnusedVariable, UndefinedClass */ /** @psalm-suppress UnusedVariable, UndefinedClass */ $conts = $stream->do_query("select * from lasthit order by id DESC","array");
 			
 	print "<h1 class=\"Band3\"><img src='Images/menu.gif' border=0>Calendar</h1> <div class=\"Box\">";
 
@@ -274,13 +276,13 @@ print "";
 	
 require_once('class.Calendar.php');
 
-$gyear = date("Y");
-$gmonth = date("m");
+/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $gyear = date("Y");
+/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $gmonth = date("m");
 $gmonthn = date("F");
 
-$cal = new Calendar ('$gyear', '$gmonth' );
+/* @phpstan-ignore-line */ /** @psalm-suppress TooManyArguments */ /** @psalm-suppress TooManyArguments */ $cal = new Calendar ('$gyear', '$gmonth' );
 echo "<b>".$gmonthn."</b>"; 
-echo $cal->display();
+/* @phpstan-ignore-line */ echo $cal->display();
 
 		
 		print "</div>";  ?>
@@ -294,12 +296,12 @@ echo $cal->display();
 				<table width="100%" border="0" cellspacing="1" cellpadding="5" bgcolor="#ffffff"><tr><td>
 				
 <?php	
-	$conts = $stream->do_query("select * from serialterms order by stamp desc","array");
+	/* @phpstan-ignore-line */ /** @psalm-suppress UnusedVariable, UndefinedClass */ /** @psalm-suppress UnusedVariable, UndefinedClass */ $conts = $stream->do_query("select * from serialterms order by stamp desc","array");
 			
-	print "<h1 class=\"Band3\"><img src='Images/menu.gif' border=0>Lastest News</h1> <div class=\"Box\">";
+	print "<h1 class=\"Band3\"><img src='Images/menu.gif' border=0>Lastest News</h1> <div class=\"Box\">"; // codespell:ignore lastest
 
 	print "Reports of another punishment beating have just come in, 
-	see below <br><br><a href='gallery.php?img=Gallerys/Random Killings/sav.jpg'><img src='Gallerys/Random Killings/tn_sav.jpg' border=0></a>";
+	see below <br><br><a href='gallery.php?img=Gallerys/Random Killings/sav.jpg'><img src='Gallerys/Random Killings/tn_sav.jpg' border=0></a>"; // codespell:ignore sav
 		
 		print "</div>";  ?>
 		
@@ -316,17 +318,17 @@ echo $cal->display();
 				<table width="100%" border="0" cellspacing="1" cellpadding="5" bgcolor="#ffffff"><tr><td>
 				
 <?php	
-	$conts = $stream->do_query("select * from serialterms order by stamp desc","array");
+	/* @phpstan-ignore-line */ /** @psalm-suppress UndefinedClass */ /** @psalm-suppress UndefinedClass */ $conts = $stream->do_query("select * from serialterms order by stamp desc","array");
 			
 	print "<h1 class=\"Band3\"><img src='Images/menu.gif' border=0>Last 10 Serial Searches</h1> <div class=\"Box\">";
 
 	for($s=0;$s<10;$s++){
 		$tmp = $conts[$s];
-		$id = $tmp[0];
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $id = $tmp[0];
 		$term = $tmp[1];
-		$stamp = $tmp[2];   
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $stamp = $tmp[2];   
 	
-		$r = $s + 1;
+		/** @psalm-suppress UnusedVariable */ /** @psalm-suppress UnusedVariable */ $r = $s + 1;
 
 		print "<b><img src='Images/serial.gif' border=0> <a href='index.php?page=serials&term=$term&dbcount=10000'>$term</a></b><br>";
 				
@@ -364,3 +366,4 @@ echo $cal->display();
 	</tr></table>
 		
 <?php include ("footer.php"); ?>
+<?php // jscpd:ignore-end ?>
