@@ -1,5 +1,9 @@
 # feeditout.com (version 2)
 
+<p align="center">
+  <img src=".github/logo.png" alt="www.feeditout.com2 logo" width="128" />
+</p>
+
 Version 2 of the Feed It Out site, kept as a Visual Studio PHP project.
 
 ## Contents
